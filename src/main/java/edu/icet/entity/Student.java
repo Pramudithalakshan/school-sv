@@ -15,13 +15,12 @@ import lombok.ToString;
 @Entity
 @Table(name = "students")
 public class Student {
+    private Integer schoolId;
     @Id
     private Integer id;
     private String firstName;
     private String lastName;
+    private Integer classId;
     private String phone;
     private String email;
-    private Integer genderId;
-    private Integer cityId;
-    private Integer addressId;
 }

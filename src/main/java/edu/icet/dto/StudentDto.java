@@ -10,9 +10,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class StudentDto {
+    private Integer schoolId;
     private Integer id;
     private String firstName;
     private String lastName;
+    private Integer classId;
     private String phone;
     private String email;
 }
