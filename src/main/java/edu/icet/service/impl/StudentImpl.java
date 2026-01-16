@@ -1,10 +1,14 @@
 package edu.icet.service.impl;
 
 import edu.icet.dto.StudentDto;
+import edu.icet.entity.School;
+import edu.icet.entity.Student;
 import edu.icet.mapper.StudentMapper;
+import edu.icet.repository.SchoolRepository;
 import edu.icet.repository.StudentRepository;
 import edu.icet.service.StudentService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +18,14 @@ import java.util.List;
 public class StudentImpl implements StudentService {
     private final StudentRepository repository;
     private final StudentMapper studentMapper;
+    private final ModelMapper modelMapper;
+    private final SchoolRepository schoolRepository;
     @Override
-    public void addStudent(StudentDto student) {
-        repository.save(studentMapper.toEntity(student));
+    public void addStudent(StudentDto studentDto) {
+        Student student = modelMapper.map(studentDto, Student.class);
+        School school = schoolRepository.getReferenceById(studentDto.getSchoolId());
+        student.setSchool(school);
+        repository.save(student);
     }
 
     @Override

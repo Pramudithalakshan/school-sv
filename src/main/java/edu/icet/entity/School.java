@@ -1,12 +1,13 @@
 package edu.icet.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -21,4 +22,6 @@ public class School {
     private Integer addressId;
     private Integer cityId;
     private Integer provinceId;
+    @OneToMany(mappedBy = "school",cascade = CascadeType.ALL)
+    private List<Student> students;
 }
