@@ -19,6 +19,10 @@ public class Student {
     private String lastName;
     private String phone;
     private String email;
+    private String nic;
+    private Integer addressId;
     private Integer classId;
-    private Integer schoolId;
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    private School school;
 }
