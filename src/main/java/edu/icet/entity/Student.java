@@ -21,7 +21,10 @@ public class Student {
     private String email;
     private String nic;
     private Integer addressId;
-    private Integer classId;
+    @ManyToOne
+    @JoinColumn(name = "class_id")
+    private Classes classes;
+
     @ManyToOne
     @JoinColumn(name = "school_id")
     private School school;

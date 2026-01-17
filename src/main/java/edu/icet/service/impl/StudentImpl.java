@@ -1,8 +1,6 @@
 package edu.icet.service.impl;
 
 import edu.icet.dto.StudentDto;
-import edu.icet.entity.School;
-import edu.icet.entity.Student;
 import edu.icet.mapper.StudentMapper;
 import edu.icet.repository.SchoolRepository;
 import edu.icet.repository.StudentRepository;
@@ -22,10 +20,7 @@ public class StudentImpl implements StudentService {
     private final SchoolRepository schoolRepository;
     @Override
     public void addStudent(StudentDto studentDto) {
-        Student student = modelMapper.map(studentDto, Student.class);
-        School school = schoolRepository.getReferenceById(studentDto.getSchoolId());
-        student.setSchool(school);
-        repository.save(student);
+        repository.save(studentMapper.toEntity(studentDto));
     }
 
     @Override

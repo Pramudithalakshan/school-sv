@@ -8,18 +8,20 @@ import lombok.ToString;
 
 import java.util.List;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "schools")
-public class School {
+@Table(name = "classes")
+public class Classes {
     @Id
     private Integer id;
-    private String name;
-    private Integer addressId;
-    @OneToMany(mappedBy = "school",cascade = CascadeType.ALL)
-    private List<Student> students;
+
+    @ManyToOne
+    @JoinColumn(name = "grade_id")
+    private Grade grade;
+
+    @OneToMany(mappedBy = "classes",cascade = CascadeType.ALL)
+    List<Student> students;
 }
