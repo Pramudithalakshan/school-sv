@@ -28,4 +28,5 @@ public class StudentController {
     public StudentDto searchStudent(@PathVariable Integer id){
         return studentService.searchStudent(id);
     }
+
 }
