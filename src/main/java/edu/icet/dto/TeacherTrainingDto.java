@@ -18,5 +18,4 @@ public class TeacherTrainingDto {
     private Date startDate;
     private Date endDate;
     private String certification;
-    private Integer schoolId;
 }

@@ -260,8 +260,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/school_sv_saas_db
-    username: root
-    password: Root@123
+    username: your_database_username
+    password: your_database_password
 ```
 
 **Important Notes:**
@@ -274,7 +274,7 @@ spring:
 The JWT secret key is configured in `src/main/resources/application.properties`:
 
 ```properties
-SECRET_KEY=404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+SECRET_KEY=your_secret_key_here_minimum_256_bits
 ```
 
 **Security Warning**: 
@@ -286,9 +286,12 @@ SECRET_KEY=404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
 
 ### Automatic Migration with Flyway
 
-The application uses Flyway for database version control. The schema is automatically created on first run from the migration script:
+The application uses Flyway for database version control. The schema is automatically created on first run from the migration scripts:
 
-**Location**: `src/main/resources/db/migration/V1__schoolDb.sql`
+**Migration Files**:
+- `src/main/resources/db/migration/V1__schoolDb.sql` - Core tables (users, schools, grades, classes, hostels, students, medium)
+- `src/main/resources/db/migration/V2__schoolDb.sql` - Additional tables (subjects, academic_years, employees, teachers)
+- `src/main/resources/db/migration/V3__schoolDb.sql` - Extended tables (evaluations, exams, leaves, marks, payments, principles, societies, staff, attendances, schedules, training, timetables, types)
 
 ### Manual Database Creation (Optional)
 
@@ -323,17 +326,42 @@ This enables:
 
 Flyway will automatically:
 1. Check the database version
-2. Apply pending migrations in order
+2. Apply pending migrations in order (V1, V2, V3)
 3. Track migration history in `flyway_schema_history` table
 4. Ensure database consistency
 
-The initial migration (`V1__schoolDb.sql`) creates:
+The migrations create the following tables:
+
+**V1 (Core System)**:
+- `medium` table - Language medium
 - `users` table - User authentication
 - `grades` table - Grade levels
 - `schools` table - School information
 - `hostels` table - Hostel management
 - `classes` table - Class organization
 - `students` table - Student records
+
+**V2 (Academic & Staff)**:
+- `subject` table - Subject management
+- `academic_years` table - Academic year tracking
+- `employees` table - Employee records
+- `teachers` table - Teacher information
+
+**V3 (Operations & Management)**:
+- `evaluations` table - Teacher evaluations
+- `exams` table - Examination records
+- `leaves` table - Leave management
+- `marks` table - Student marks/grades
+- `payments` table - Payment processing
+- `principles` table - Principal information
+- `societies` table - Student societies
+- `staff` table - Non-teaching staff
+- `student_attendances` table - Student attendance tracking
+- `teacher_attendances` table - Teacher attendance tracking
+- `teacher_schedules` table - Teacher scheduling
+- `teacher_training` table - Teacher training programs
+- `time_tables` table - Timetable management
+- `types` table - Type classifications
 
 All foreign key relationships and constraints are established automatically.
 
@@ -519,7 +547,19 @@ The database schema is managed by Flyway migrations. Here's the complete structu
 
 ### Tables Overview
 
-#### 1. users
+#### Core Tables (V1 Migration)
+
+#### 1. medium
+Stores language medium information for multi-language support.
+
+| Column | Type | Constraints | Description |
+|--------|------|-------------|-------------|
+| id | INT | PRIMARY KEY, AUTO_INCREMENT | Unique medium identifier |
+| language | VARCHAR(10) | NOT NULL | Language name |
+
+---
+
+#### 2. users
 Stores user authentication and authorization information.
 
 | Column | Type | Constraints | Description |
@@ -531,7 +571,7 @@ Stores user authentication and authorization information.
 
 ---
 
-#### 2. grades
+#### 3. grades
 Manages grade levels in the educational system.
 
 | Column | Type | Constraints | Description |
@@ -542,7 +582,7 @@ Manages grade levels in the educational system.
 
 ---
 
-#### 3. schools
+#### 4. schools
 Stores comprehensive school information.
 
 | Column | Type | Constraints | Description |
@@ -564,7 +604,7 @@ Stores comprehensive school information.
 
 ---
 
-#### 4. hostels
+#### 5. hostels
 Manages hostel information for residential students.
 
 | Column | Type | Constraints | Description |
@@ -581,7 +621,7 @@ Manages hostel information for residential students.
 
 ---
 
-#### 5. classes
+#### 6. classes
 Represents individual classes within grades.
 
 | Column | Type | Constraints | Description |
@@ -596,7 +636,7 @@ Represents individual classes within grades.
 
 ---
 
-#### 6. students
+#### 7. students
 Stores comprehensive student information.
 
 | Column | Type | Constraints | Description |

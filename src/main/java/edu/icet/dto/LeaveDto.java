@@ -13,8 +13,7 @@ import java.util.Date;
 public class LeaveDto {
     private Integer id;
     private Integer teacherId;
-    private String type;
-    private Date startDate;
+    private Date date;
     private String reason;
     private Boolean isApproved;
 }

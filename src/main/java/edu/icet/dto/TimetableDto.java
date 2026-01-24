@@ -18,6 +18,5 @@ public class TimetableDto {
     private Integer periods;
     private String startTime;
     private String endTime;
-    private Integer academicYearId;
     private Boolean isActive;
 }

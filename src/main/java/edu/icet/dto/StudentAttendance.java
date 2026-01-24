@@ -10,9 +10,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class StudentAttendance {
+public class    StudentAttendance {
     private Integer id;
     private Integer studentId;
     private Date date;
-    private Boolean isAttend;
+    private Boolean isAttended;
 }

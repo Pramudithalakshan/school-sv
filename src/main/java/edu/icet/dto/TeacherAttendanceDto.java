@@ -15,6 +15,4 @@ public class TeacherAttendanceDto {private Integer id;
     private Date date;
     private String checkInTime;
     private String checkOutTime;
-    private Integer schoolId;
-
 }

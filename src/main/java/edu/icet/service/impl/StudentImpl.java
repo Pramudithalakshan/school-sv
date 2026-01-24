@@ -17,7 +17,7 @@ public class StudentImpl implements StudentService {
     public void addStudent(StudentDto dto) {
         String sql = "INSERT INTO students(id,class_id,first_name,last_name,date_of_birth,gender" +
                 ",address,phone_number,email,enrollment_date,school_id,hostel_id) " +
-                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(sql,
                 dto.getId(),
                 dto.getClassId(),

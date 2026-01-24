@@ -12,7 +12,6 @@ import lombok.ToString;
 public class SubjectDto {
     private Integer id;
     private String name;
-    private Integer code;
     private Integer mediumId;
-    private Boolean isActive;
+    private String description;
 }

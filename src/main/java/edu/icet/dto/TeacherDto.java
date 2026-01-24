@@ -12,7 +12,8 @@ import java.util.Date;
 @ToString
 public class TeacherDto {
     private Integer id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String gender;
     private String contact;
     private String email;
@@ -20,8 +21,6 @@ public class TeacherDto {
     private Date hireDate;
     private Boolean isActive;
     private Integer mediumId;
-    private Integer typeId;
     private Integer subjectId;
     private Integer employeeId;
-    private Integer schoolId;
 }

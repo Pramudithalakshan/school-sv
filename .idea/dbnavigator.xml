@@ -31,6 +31,12 @@
       <model-selection />
     </selection-state>
   </component>
+  <component name="DBNavigator.Project.DatabaseBrowserManager">
+    <autoscroll-to-editor value="false" />
+    <autoscroll-from-editor value="true" />
+    <show-object-properties value="true" />
+    <loaded-nodes />
+  </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="1d7fc551-afac-43b8-ab54-e5fe005ef010">
       <console name="localhost" type="STANDARD" schema="mysql" session="Main" />
@@ -50,6 +56,10 @@
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$PROJECT_DIR$/src/main/resources/db/migration/V2__schoolDb.sql" connection-id="1d7fc551-afac-43b8-ab54-e5fe005ef010" session-id="MAIN" current-schema="school_sv_saas_db" />
+    <mapping file-url="file://$PROJECT_DIR$/src/main/resources/db/migration/V1__schoolDb.sql" connection-id="1d7fc551-afac-43b8-ab54-e5fe005ef010" session-id="MAIN" current-schema="school_sv_saas_db" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
