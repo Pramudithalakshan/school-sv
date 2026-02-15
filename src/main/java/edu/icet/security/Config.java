@@ -17,14 +17,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class Config {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final ApplicationConfig applicationConfig;
+    private static final String ADMIN="ADMIN";
+    private static final String TEACHER="TEACHER";
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http){
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->auth
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/school/**").hasRole("ADMIN")
-                        .requestMatchers("/student/**").hasRole("ADMIN")
+                        .requestMatchers("/school/**").hasRole(ADMIN)
+                        .requestMatchers("/student/**").hasRole(ADMIN)
+                        .requestMatchers(("/teacher/**")).hasRole(ADMIN)
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session->session
