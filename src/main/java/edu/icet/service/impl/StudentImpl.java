@@ -36,7 +36,10 @@ public class StudentImpl implements StudentService {
 
     @Override
     public List<StudentDto> getStudent() {
-        String sql = "SELECT * FROM students";
+        String sql = "SELECT classes.class_name,first_name,last_name,date_of_birth,gender,address,phone_number,email," +
+                "enrollment_date,schools.school_name,hostels.hostel_name " +
+                "FROM students INNER JOIN classes ON students.class_id = classes.id INNER JOIN schools ON students.school_id = schools.id " +
+                "INNER JOIN hostels ON students.hostel_id = hostels.id";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(StudentDto.class));
     }
 

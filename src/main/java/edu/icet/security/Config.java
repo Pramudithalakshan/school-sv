@@ -26,8 +26,9 @@ public class Config {
                 .authorizeHttpRequests(auth->auth
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/school/**").hasRole(ADMIN)
-                        .requestMatchers("/student/**").hasRole(ADMIN)
+                        .requestMatchers("/student/**").permitAll()
                         .requestMatchers(("/teacher/**")).hasRole(ADMIN)
+                        .requestMatchers(("/user/**")).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session->session
