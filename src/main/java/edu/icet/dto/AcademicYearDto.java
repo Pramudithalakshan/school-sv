@@ -12,7 +12,6 @@ import java.util.Date;
 @ToString
 public class AcademicYearDto {
     private Integer id;
-    private Integer yearLabel;
     private Date startDate;
     private Date endDate;
     private Boolean isActive;

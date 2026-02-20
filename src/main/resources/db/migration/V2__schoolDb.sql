@@ -8,7 +8,6 @@ CREATE TABLE IF NOT EXISTS subject(
 
 CREATE TABLE IF NOT EXISTS academic_years (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    year_label int NOT NULL,
     start_year YEAR NOT NULL,
     end_year YEAR NOT NULL,
     isActive BOOLEAN DEFAULT TRUE
@@ -20,9 +19,7 @@ CREATE TABLE IF NOT EXISTS employees (
     join_date DATE NOT NULL,
     basic_salary DECIMAL(10,2) NOT NULL,
     allowances DECIMAL(10,2),
-    bank_account VARCHAR(50),
-    school_id INT NOT NULL,
-    CONSTRAINT fk_employee_school FOREIGN KEY (school_id) REFERENCES schools(id)
+    bank_account VARCHAR(50)
 );
 CREATE TABLE IF NOT EXISTS teachers(
     id INT AUTO_INCREMENT PRIMARY KEY,
